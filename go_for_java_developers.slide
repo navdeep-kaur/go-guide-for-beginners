@@ -1,0 +1,74 @@
+GoLang
+08 Feb 2023
+
+Navdeep Kaur
+
+
+*  Go for Java Developers
+- Java is a fantastic language for large-scale, large-team enterprise projects.
+- However, Java requires a fair amount of overhead to spin-up and deploy a new application, and its verbose nature can make it a poor fit for small projects or one-off utility tasks.
+
+
+* Packages, Variables & Functions
+.code go_for_java_developers/variables.go /^//START/,/^//END/ HL12
+
+* Packages, Variables & Functions
+- Go variable and function declarations work in reverse order from Java
+- Java uses the keywords public, private, etc to control access from outside of a class or package.  Go does this through capitalization.
+- A variable or function beginning with a lower-case character is analogous to private in Java.
+- Multiple return types??????
+- - Java methods can take any number of input parameters, but always return no more than ONE return type.  If you need a method to return more than one distinct piece of information, then you would either create a custom type to hold the multiple pieces… or else give up and refactor the method to avoid that clutter.
+- - One of the surprises with Go functions is that they quite commonly return multiple values in a single call!
+- - Go uses this approach extensively to report errors.
+
+* Pointers
+- Pointers allow you to pass any variable by reference instead of by value (or at least make it work that way — Go does not have the concept of a “reference”).
+- Most types in Go are passed by value if they are not pointers.
+- Slices, maps and interfaces are always handled like pointers.
+- The syntax is very similar to how C does it, although Go does not support pointer arithmetic.
+- Luckily, Go has garbage collection, so we do not need to worry too much about memory leaks.
+
+.code go_for_java_developers/pointer.go /^//START/,/^//END/ HL12
+
+* Slices and Maps
+- Slices are the Lists of Go while maps are similar to HashMaps that essentially are key-value stores.
+- Go also has fixed-sized arrays
+
+.code go_for_java_developers/slices_and_maps.go /^//START/,/^//END/ HL12
+
+* Slices and Maps
+- As you can see, slices are variable-sized lists that also support Python-like indexing (or “slicing”).
+- You can convert a fixed-sized array to a slice by calling fixed[:]on the array.
+- Maps, on the other hand, are implemented as Hashmaps and allow you to quickly lookup a value by a key.
+
+* Error Handling
+- Probably the biggest discussion point with Go is its error handling — or lack thereof.
+- Go has no concept of “throwing an error” or the typical try/catch blocks you find in Java and many other languages.
+- In Go, errors are returned “normally” from a function and you as the caller are responsible for handling them.
+
+.code go_for_java_developers/error_handling.go /^//START/,/^//END/ HL12
+
+* Error Handling
+- You will see the if err != nil part in a lot of Go programs.
+- While this becomes seemingly annoying at some point — and sometimes, it does — it forces you to always think about when errors could happen and how to handle them.
+- In Java, you often simply rely on some other part of the code to handle the errors that might get thrown.
+- Go has a way to “throw” errors, though: panicking. But that should usually be reserved for nil de-referencing or type assertion errors.
+
+* Interfaces and structs
+- For both, Go and Java, interfaces are used to describe the public API that some implementation should offer and they are especially useful when extending a library or writing tests.
+- While you have to explicitly implement an interface in Java, in Go, interfaces are implemented implicitly — you just define all methods on a Go struct that the interface demands.
+- Structs, on the other hand, are the classes of Go. They can have members and methods like a class in Java.
+
+* Interfaces and structs
+.code go_for_java_developers/interfaces_and_structs.go /^//START/,/^//END/ HL12
+
+* Interfaces and structs
+- Note here that dog is of type Animal not *Dog and that interfaces in Go have to be pointers.
+- You sometimes see a line like var _ Animal = &Dog{} which asserts that Dog implements Animal.
+
+* Deferred Function Calls
+
+
+
+
+

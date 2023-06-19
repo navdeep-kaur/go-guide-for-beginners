@@ -1,0 +1,50 @@
+Go Interfaces
+08 Feb 2023
+
+Navdeep Kaur
+
+
+* Implicit Implementation
+- In Go, interfaces are implicitly implemented by concrete types, meaning that there is no need to use the keyword "implements" to declare that a type implements an interface.
+- This makes it easier to write code that implements interfaces, as there is no boilerplate code required.
+- This changed the way we have used interfaces so far.
+- Before Golang, interfaces used to define WHO I AM, but with Golang, interfaces tell WHAT I DO.
+- It is a great shift where interfaces used to define identity to define behaviors.
+- It promotes decoupling of the implementation of objects from the code that uses them, making it easier to write maintainable code.
+
+* Interoperability
+- Because of the behaviour aspects of Interfaces in Go, they can be used to create reusable libraries that can be used in different contexts without thinking of concrete types at consumer level, improving the interoperability of code.
+ This makes it easier to build and reuse components in different projects.
+- If a class owns a behavior, it implicitly adheres to the interface.
+ This really helped in the open source ecosystem around defined behaviour, where consumers can tell what behaviour they are expecting by an interface at consumer end, and any type with that behaviour can be used as dependency without worrying about the concrete type or implementation of interface restrictions.
+
+* Composition Over Inheritance
+- In Go, interfaces allow for composition-based design, rather than inheritance-based design.
+- This means that instead of creating a hierarchy of types that inherit behavior from a parent type, objects can be composed of multiple smaller interfaces that define their behavior.
+- This leads to a more modular and flexible design, as objects can be reused and combined in different ways.
+
+* Zero Overhead & Strong Typing
+- In Go, interfaces do not introduce any runtime overhead, as the type information is known at compile-time. This makes interfaces an efficient way to define the behavior of an object, without sacrificing performance.
+- Go's interfaces provide robust typing, ensuring that only types that implement the required behavior can be used in certain contexts.
+- This eliminates the need for runtime type checking and improves the reliability of code.
+
+* Duck Typing
+- In Go, the focus is on the behaviour of a type, rather than its exact type.
+- This is known as "duck typing," and it allows for more flexible and dynamic code.
+
+* Embedding Nature
+- In Go, interfaces can be embedded in other interfaces to create a more complex interface.
+- This makes it easier to define the behaviour of a type and avoid code duplication.
+
+* Error Handling
+- Interfaces in Go can be used to define the behaviour of error types, allowing for a consistent and flexible approach to error handling in a codebase.
+- If we define a common behaviour in our error types, we don’t need to define different interfaces for each error type, but a single interface can be used.
+- It reduces code duplication.
+
+* Testing
+- Because of the consumer-driven interfaces concept, it makes it a lot easier to write unit tests of components independently without waiting on other modules to define interfaces that they will expose.
+- Tests can be written without being tightly coupled to the implementation of the type.
+
+* Conclusion
+- Implicit implementation from the behavior aspect of the Go’s interface, will certainly be the most important difference as compared to other programming languages.
+- Go's interfaces provide a comprehensive set of features that make it easier to write maintainable, reusable, and scalable code. Whether used for defining the behavior of objects, implementing polymorphism, or providing a way to handle errors, interfaces are an essential tool for any Go developer.

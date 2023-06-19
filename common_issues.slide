@@ -1,0 +1,71 @@
+Common Problems for New Go Developers
+08 Feb 2023
+
+Navdeep Kaur
+
+
+* Pointers in Golang
+- Pointers are a very basic but extremely powerful tool that are mostly misunderstood and considered as a difficult or frustrating concept when programming.
+- Pointers in Go don’t function the way they do in C/C++
+- Mythbuster: use pointers for performance
+
+* So are pointers never more performant than passing the values?
+- Pointers can have a benefit when you have structs containing lots of data.
+- When you have these, the overhead of the garbage collector might be negated by the overhead you’d get when copying large amounts of data.
+- So, ‘how much kb / mb should the struct be’? I don’t think there’s a magic number, as with anything performance related, you should probably benchmark this. Go has great benchmarking tools built-in, so might as well make use of them 😃
+
+* When to use pointers in Go?
+- Mutability
+- API consistency
+- To signify true absence
+
+* Difference between * and &
+
+* Purpose of using interface and when to use them:
+- An interface is a collection of method receivers.
+- The standard library has a few usable interfaces defined. Let’s use one of them as an example to better understand.
+- We will take a look at the Error interface.
+
+
+* Purpose of using interface and when to use them:
+.play common_issues/error_interface.go
+
+* Purpose of using interface and when to use them:
+- Modularity - Interfaces allow us to skip the pain of refactoring and very smoothly exchange business logic. When creating an interface, It’s good practice to try to think about what methods have to be part of it, somebody once said my interfaces should contain a maximum of 5–6 methods.
+- Testing becomes easier.
+- DRY (Don't repeat yourself) - Interfaces allow us to not repeat code. We can use interfaces to pass multiple structs into the same function where we want the same behavior.
+
+
+* Tips & Tricks
+- Empty Interface - It’s an interface, that has 0 methods applied to it, making every type part of it. his allows you to send ANY type into a method.
+- Type assertion - You can perform type assertion on Interfaces. This is useful when you want a function to accept two kinds of data but still want to separate what’s done based on the input.
+- Type Switching
+- Embedding interfaces - In Go, you can also embed interfaces into other interfaces, or structs.
+
+* Testing in Go
+- Create a file whose name ends with _test.go
+- Import package testing by import “testing” command
+- Write the test function of form func TestXxx(*testing.T) which uses any of Error, Fail, or related methods to signal failure.
+- Put the file in any package.
+- Run command go test
+- test file will be excluded in package build and will only get executed on go test command.
+
+
+* testing private vs public methods
+- TBF, Testing private functions defeats the purpose of encapsulation.  If you are unable to test all code paths in a private function, it instead should be a public function, as private functions form the core of the encapsulation and should only provide code paths that satisfy the public surface needs.
+- How do I avoid crowding the public surface? - Inevitably you will write some general interfaces which are useful to many parts of our code, but are not strictly apart of the public surface you wish to present. These interfaces are perfect candidates for placement in a sub-package. In this way we create a testable public interface for our private code to use, but which is not strictly apart of our main packages public surface. golang supports sub packages naturally and can be a strong indicator to users which interface surfaces are specific to our package.
+- go doc supports this naturally by generating documentation for the current package and ignoring sub packages unless specified directly.
+
+
+* How do I know what interfaces to make public or private?
+- In general, functions and interfaces which are tightly coupled to the calling function are good candidates for privatization; all others should be public.
+- When deciding if a function should be private or public it can be helpful to ask the following:
+- - Is this function generally useful in other parts of the code base? (make it a public/sub package).
+- - Could this function be useful to others? (make it a public/sub package)
+- - Is this function tightly coupled to the package? (make it private)
+- - Can all code paths be covered by testing the public interface? (If yes make private else public)
+
+* Mocking/stubbing
+
+* Add resources we can refer to for practicing.
+

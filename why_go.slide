@@ -1,0 +1,50 @@
+GoLang
+08 Feb 2023
+
+Navdeep Kaur
+
+
+*  Why Go: The benefits of Golang
+What makes Golang so popular and desirable for the following?
+- Web Development
+- Networking Tools and Servers such as Kubernetes and Istio
+- Backend Systems
+- Powerful Command Line Utilities such as Docker and Hugo
+- Applications that exchange data in JSON format.
+- Database systems such as CockroachDB and key/value stores such as etcd.
+.image Golang-Logo.jpg
+
+* History Of Golang
+- Born out of a belief that C++ has grown too complex and feature-bloated, Go was originally intended to appeal to systems-level programmers.
+- Go has been most enthusiastically embraced by Python developers, and other dynamic language communities.
+- Go can be described as a best of both worlds.
+- It offers a light and expressive syntax, comparable to high-level languages.
+- Like C, Go has a fairly compact language specification, and a small standard library compared to other modern languages.
+
+
+* Features:
+- Static Typing and Type Safety
+- Simplified use of pointers
+- Binary executable, making it one of the fastest languages.
+- Minimalist
+- Rich Standard Library
+- Automatic garbage collection
+- Built-in testing and benchmarking
+- Advanced concurrency techniques
+- A dependency management system
+- Low boilerplate code
+- Networking
+- Support for functional programming.
+
+* Run your Go code
+.play hello.go
+
+* Why I personally like Golang?
+- Predictable. Due to it's simplicity it does not have strange side effects.
+- Although Go Supports pointers, it does not support pointer arithmetic like C.
+- Go is not object oriented, but the Go interfaces are very versatile and allow you to mimic some of the capabilities of object oriented languages such as Polymorphism, Encapsulation and Composition.
+- Latest Go versions offer support for Generics.
+- Support for Garbage Collection, no manual memory management needed.
+- GoDoc, Linting, GoMod.
+
+
